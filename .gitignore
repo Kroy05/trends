@@ -1,0 +1,21 @@
+# .gitignore का पूरा कोड
+# Virtual Environment
+myv/
+venv/
+env/
+
+# Django
+*.log
+db.sqlite3
+db.sqlite3-journal
+
+# Python
+*.pyc
+__pycache__/
+.env
+
+# Static files build directory
+staticfiles/
+
+# Vercel
+.vercel/

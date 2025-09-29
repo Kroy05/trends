@@ -1,0 +1,50 @@
+
+{% extends "store/base.html" %}
+{% load static %}
+<!--<html>
+    <head>
+        <title>food</title>
+        <link rel="stylesheet" href="{% static 'static/store/style.css' %}">
+        <style>
+          body{
+            color:
+          }
+        </style>
+    </head>
+    <body> -->
+
+
+
+
+    {% block body %}
+    
+    <div class="banner">
+        <img src="static/bhh.png">
+    </div>
+
+    <section class="section1">
+
+        <div class="card-container">
+            {%  for x in item_list %}
+            <a href="/detail/{{x.id}}">
+                <div class="card">
+                    <img src="{{x.item_image}}">
+                    <h1> {{x.item_title}} </h1>
+                    <h2> &#8377  {{x.item_price}} </h2>
+                </div>
+            </a>
+            {% empty %}
+            <center>
+            <h1>No Data Found<h1> </center>
+            {% endfor %}<br>
+
+        </div>
+    </section>
+       
+        
+
+       
+
+    {% endblock %}
+    </body>
+</html>

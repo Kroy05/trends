@@ -1,0 +1,618 @@
+
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> Bhawana Handloom </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="#">
+        <link rel="stylesheet" href="{% static 'store/style.css' %}">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'store/style.css' %}">
+       <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+        <style>
+            *{
+                margin:0;
+                padding:0;
+                overflow-x:hidden;
+            }
+            a{
+                text-decoration:none;                                        
+                color:black;
+                border:none;
+            }
+            body{
+                width:100%;
+                font-family: "Poppins", sans-serif;
+            }
+            .nav{
+                background-color:black;
+                display:grid;
+                grid-template-columns: auto auto auto auto auto;
+                height:65px;
+                justify-content:space-between;
+                align-items: center;
+                padding-left:30px;
+                }
+            .nav .sbrand a {
+                    text-decoration:none;
+                }
+
+            .nav .sbrand a h1{
+                color:white;
+                font-family: "Winky Rough", sans-serif;
+                font-size:30px;
+                
+            } 
+            .nav .form{
+                grid-column-start: 2;
+                grid-column-end:4;
+
+            }
+            .nav .form input{
+                font-size:18px;
+                padding:5px;
+                width:450px;
+            }
+
+            .nav .form button{
+                font-size:18px;
+                padding:5px;
+            }
+            .nav .form button:hover{
+                background-color:green;
+            }
+            .nav .link{
+                grid-column-start: 4;
+                grid-column-end:6;
+            }
+            .nav .link a{
+                text-decoration:none;
+                color:white;
+                font-size:18px;
+                padding:15px;
+            }
+             .nav .link a:hover{
+                color:blue;
+            }
+            @media (max-width:850px){
+                .nav .sbrand h1{
+                    font-size:21px;
+                }
+                .nav .link a{
+                font-size:12px;
+                padding:10px;
+                }
+
+                .nav{
+                    
+                }
+                .nav .form input{
+                    width:250px;
+                    font-size:10px;
+                    padding:3px;
+                    
+                }
+                .nav .form button{
+                font-size:10px;
+                padding:3px;
+                }
+            }
+
+            @media (max-width:520px){
+                .nav{
+                    display:block;
+                    text-align:center;
+                    height:auto;
+                    padding-block:10px;
+                }
+                .nav .form{
+                    display:none;
+                }
+                .nav .sbrand h1{
+                    font-size:27px;
+                    margin-bottom:5px;
+                }
+            }
+
+            /* ------------------------ cards ------------------------------------------------------------------------------*/
+            .section1{
+                margin-top:100px;
+                margin-bottom:100px;
+                width:100%;
+            }
+
+            .section1 .card-container{
+                display: grid;
+                grid-template-columns: auto auto auto auto;
+                padding-inline:70px;
+                justify-content:space-between;
+                align-items:center;
+                row-gap:50px;
+                
+            }
+            .section1 .card{
+                box-shadow:2px 2px 8px rgb(120, 109, 109);
+                height:500px;
+                width:360px;
+                border-radius:15px;
+                margin-block:5px;
+                cursor: pointer;
+            }
+            .section1 img{
+                height:350px;
+                width:100%;
+            }
+            .section1 h1{
+                padding:6px;
+                font-weight:normal;
+                font-size:23px;
+            }
+            .section1 h2{
+                padding-inline:6px;
+                font-size:25px;
+            }
+
+           @media (max-width:1250px){
+            .section1 .card-container{
+                display: grid;
+                grid-template-columns: auto auto auto;
+            }
+            .section1 .card{
+                width:300px;
+            }
+           }
+           @media (max-width:1080px){
+            .section1 .card-container{
+                display: grid;
+                grid-template-columns: auto auto;
+            }
+           }
+           @media (max-width:580px){
+            .section1 .card-container{
+                display: grid;
+                grid-template-columns: auto;
+                padding-inline:30px;
+                justify-content:center;
+            }
+            .section1 .card{
+                width:280px;
+            }
+           }
+
+           /*----------------------------------deatil page-------------------------------------------------------------*/
+           .gallry{
+            height:750px;
+            display:flex;
+            width:750px;
+            overflow-y:scroll;
+            
+           }
+           .gallry div{
+            display:grid;
+            grid-template-columns:auto;
+            padding:10px;
+            flex:none;
+            width:100%;
+           }
+           .gallry div img{
+                width:100%;
+                height:100%;
+           }
+           .gallry::-webkit-scrollbar{
+            display:none;
+           }
+           #front , #back{
+            display:inline;
+            font-size:51px;
+            cursor:pointer;
+            margin:10px;
+           }
+
+           .deatil-cont{
+            display:flex;
+            gap:20px;
+           }
+           .deatils-deatils{
+            margin-left:15px;
+            margin-right:10px;
+           }
+
+           .deatils-deatils h2{
+            font-size:55px;
+            font-weight:normal;
+            font-family: "Winky Rough", sans-serif;
+            margin-top:50px;
+            margin-bottom:40px;
+           }
+           .deatils-deatils table{
+            width:75%;
+            text-align:left;
+            font-family: "Archivo Narrow", sans-serif;
+           }
+           .deatils-deatils table th,.deatils-deatils table td{
+            font-size:24px;
+           }
+           .deatils-deatils h1{
+                font-weight:normal; 
+                margin-top:70px;
+                width:100%;
+                padding-right:20px;
+                font-size:20px;
+                letter-spacing:2px;
+                margin-bottom:50px;
+           }
+           .contact-btn{
+            font-family: "Winky Rough", sans-serif;
+            font-size:30px;
+            padding:10px;
+            background-color:black;
+            color:white;
+            box-shadow:2px 2px 5px black;
+            
+           }
+           .contact-btn:hover{
+            font-size:31px;
+           }
+           .deatils-deatils .bck-btn{
+            margin-top:50px;
+            color:blue;
+           }
+           .deatils-deatils .bck-btn a{
+            color:blue;
+           }
+
+           @media(max-width:900px){
+            .gallry{
+            height:600px;
+            width:600px;
+            }
+            .deatils-deatils h1{
+                margin-top:50px;
+            }
+            .deatils-deatils h2{
+                margin-top:20px;
+            }
+            .deatils-deatils .bck-btn{
+            margin-top:30px;
+            }
+           }
+           @media(max-width:600px){
+            .deatil-cont{
+                display:grid;
+                grid-template-columns:auto;
+                
+            }
+            .gallry{
+            height:300px;
+            width:300px;
+            margin:auto;
+            }
+            .deatils-deatils{
+                margin:auto;
+                text-align:center;
+                padding-inline:5px;
+            }
+           }
+           @media(max-width:350px){
+            .gallry{
+            height:250px;
+            width:250px;
+            }
+            .deatils-deatils h2{
+                margin-top:0px;
+                font-size:27px;
+                margin-bottom:20px;
+            }
+            .deatils-deatils h1{
+                margin-bottom:25px;
+            }
+            .deatils-deatils table th,.deatils-deatils table td{
+            font-size:19px;
+           }
+           .deatils-deatils table{
+            width:100%;
+           }
+           .contact-btn{
+            padding:7px;
+            font-size:25px;
+           }
+           .contact-btn:hover{
+            font-size:25px;
+           }
+           }
+        /*--------------------------------banner-------------------------------------------------------------------*/
+        .banner{
+            width:100%;
+        }
+        .banner img{
+            width:100%;
+        }
+       /*---------------------------------about us page ------------------------------------------------------*/
+        .about-img ,.about-img img{
+            width:100%;
+        } 
+        .bh-logo img{
+            height:250px;
+        }
+
+        .about-para{
+            margin-inline:80px;
+            text-align:justify;
+            line-height:29px;
+            letter-spacing:1px;
+            font-size:18px;
+        }
+
+        .shorti-box-container{
+            display:grid;
+            grid-template-columns:auto auto auto;
+            margin-inline:80px;
+            margin-block:80px; 
+            gap:50px;
+          }
+          .shorti-box-container .v-card{
+            box-shadow: 5px 5px 10px grey;
+            padding:18px;
+            margin:3px;
+          }
+          .shorti-box-container .v-card h1{
+            text-align:center;
+            margin-bottom:5px;
+            letter-spacing:1px;
+          }
+
+          .intro{
+            display:grid;
+            grid-template-columns:auto auto;
+            align-items:start;
+            gap:50px;
+            margin-right:50px
+
+          }
+          .intro p{
+            line-height:30px;
+            padding-top:50px;
+            letter-spacing:2px;
+            padding-left:15px;
+            font-size:20px;
+            text-align:justify;
+          }
+          .founder{
+            margin-bottom:50px;
+          }
+          .about-contact{
+            padding-bottom:50px;
+          }
+          .about-contact h1{
+                font-size:45px;
+                margin-top:10px;
+          }
+          .about-contact p{
+            font-size:21px;
+          }
+    
+          .about-contact a button{
+            font-size:25px;
+            padding:8px;
+            background-color:#f9f3e9;
+            font-weight:bolder;
+            margin-top:30px;
+            box-shadow:5px 5px 10px black;
+            border:none;
+            cursor:pointer;
+          }
+
+          @media(max-width:1200px){
+            .intro p{
+            line-height:25px;
+            padding-top:40px;
+            letter-spacing:0px;
+            padding-left:10px;
+            font-size:15px;
+          }
+          }
+          @media(max-width:850px){
+            .intro p{
+            line-height:23px;
+            padding-top:30px;
+            padding-left:10px;
+            font-size:12px; 
+            }
+            .shorti-box-container{
+                gap:35px;
+                margin-inline:35px;
+            }
+            .shorti-box-container .v-card{
+            padding:10px;
+            margin:3px;
+          }
+          .shorti-box-container .v-card h1{
+            margin-bottom:4px;
+            letter-spacing:1px;
+          }
+          .shorti-box-container .v-card p{
+            font-size:12px;
+          }
+          }
+          @media(max-width:560px){
+            .intro{
+                display:grid;
+                grid-template-columns:auto;
+                text-align:center;
+                gap:5px;
+                
+            }
+            .intro div img {
+              height:400px;
+            }
+            .bh-logo img{
+            height:100px;
+            margin-top:30px;
+            }
+            .shorti-box-container{
+                margin-top:50px;
+                display:grid;
+                grid-template-columns:auto;
+                padding-inline:30px;
+            }
+
+          }
+          @media(max-width:360px){
+            .intro div img {
+                display:none;
+            }
+            .intro p{
+                text-align:justify;
+                padding-left:0;
+                padding-inline:15px;
+            }
+            .intro{
+                padding:0;
+                margin:0;
+            }
+            .about-contact h1{
+                font-size:32px;
+                margin-top:15px;
+          }
+            .about-contact p{
+            font-size:12px;
+            margin-inline:8px;
+            }
+    
+          .about-contact a button{
+            font-size:21px;
+            padding:5px;
+            background-color:#f9f3e9;
+            font-weight:bolder;
+            margin-top:25px;
+          }
+          }
+
+          /*----------------------------------contact------------------------------------------------------*/
+          .contact-con{
+           
+          }
+          .contact-con h1{
+            text-align:center;
+            margin-top:50px;
+            font-size:50px;
+          }
+          .contact-con p{
+            text-align:center;
+          }
+          .form-cont{
+            display:flex;
+            justify-content:center;
+            margin-top:70px; 
+            width:100%; 
+            margin-bottom:100px;
+            
+          }
+          .form-cont form{
+            box-shadow:5px 5px 10px black;
+            width:60%;
+            padding-inline:30px;
+            padding-block:45px;
+            padding-bottom:70px;
+             background-color:#f9f3e9;
+             margin:12px;
+        }
+        .form-cont form input , textarea{
+            width:100%;
+            padding:8px;
+            font-size:19px;
+            margin-bottom:21px;
+        }
+        textarea{
+            height:80px;
+        }
+        .form-cont form label{
+            font-size:21px; 
+        }
+        .form-cont form button{
+            width:100%;
+            font-size:20px;
+            padding:10px;
+            background-color:black;
+            color:white;
+        }
+        @media(max-width:600px){
+            .contact-con h1{
+            margin-top:40px;
+            font-size:27px;
+          }
+          .contact-con p{
+            font-size:12px;
+          }
+          .form-cont{
+            margin-top:40px;  
+            margin-bottom:50px;
+            
+          }
+          .form-cont form{
+            width:70%;
+            padding-inline:25px;
+            padding-block:45px;
+            padding-bottom:70px;
+             margin:10px;
+        }
+        .form-cont form input , textarea{
+            width:90%;
+            padding:5px;
+            font-size:15px;
+            margin-bottom:20px;
+        }
+        textarea{
+            height:80px;
+        }
+        .form-cont form label{
+            font-size:18px; 
+        }
+        }
+         @media(max-width:450px){
+            .contact-con h1{
+            font-size:21px;
+          }
+          .contact-con p{
+            font-size:11px;
+          }
+        }
+
+        </style>
+   
+    </head>
+    <body>
+        <nav class="nav">
+
+                <div class="sbrand">
+                    <a href="{% url 'index' %}"> <h1> BHAWANA HANDLOOM </h1></a>
+                </div>
+
+                <div class="form" method="get">
+                    <form>
+                        <input type="text" name="serac">
+                        <button type="submit"> Search </button>
+                    </form>
+                </div>
+
+
+                <div class="link">
+                    <a href="{% url 'index' %}"> Home </a>
+                    <a href="{% url 'about' %}"> About Us </a>
+                    <a href="{% url 'contact' %}"> Conatct </a>
+                    <a href="/admin/"> Admin </a>
+
+                </div>
+        </nav>
+        
+
+        {% block body %}
+        {% endblock %}
+        
+    </body>
+</html>

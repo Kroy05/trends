@@ -1,0 +1,35 @@
+{% extends "store/base.html" %}
+{% load static %}
+
+ {% block body %}
+
+ <section class="contact-con">
+    <h1> Contact Bhawana Handloom </h1>
+    <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible. </p>
+
+    <div class="form-cont">
+        <form method="post">
+            {% csrf_token %}
+            <label>Name</label> <br>
+            <input type="text" placeholder="Full Name" required name="name"><br>
+            <label> Contact Number </label><br>
+            <input type="number" placeholder="contact number"required name="number"><br>
+            <label>Email Address  </label><br>
+            <input type="email" placeholder="john.doe@example.com" name="email"><br>
+            <label> Subject </label>
+            <input type="text" placeholder="How Can I Help You" required name="subject"><br>
+            <label> Message</label>
+            <textarea placeholder="Tell Us about Your Inquiry" required name="message"> </textarea><br>
+            <button type="submit"> Send Message </button>
+            
+            
+            
+        </form>
+    </div>
+ </section>
+
+
+
+
+
+{% endblock %}
