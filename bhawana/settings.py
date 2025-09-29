@@ -1,4 +1,4 @@
-# settings.py (production-ready, Vercel friendly)
+# settings.py (production-ready, Vercel friendly) - UPDATED
 from pathlib import Path
 import os
 from dotenv import load_dotenv
@@ -19,17 +19,22 @@ SECRET_KEY = os.environ.get(
 
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
-# ALLOWED_HOSTS: comma-separated env var, e.g. "bhwanahandloom.com,www.bhwanahandloom.com"
+# -----------------------
+# ALLOWED_HOSTS & CSRF_TRUSTED_ORIGINS
+# Provide ALLOWED_HOSTS as comma-separated env var in Vercel for production:
+#   ALLOWED_HOSTS=bhwanahandloom.com,www.bhwanahandloom.com,bhwanahandloom.vercel.app
+# If env var not present, we include common defaults (localhost, vercel).
+# Note: ".vercel.app" will match any vercel subdomain, but we also add the explicit vercel app domain.
+# -----------------------
+_default_hosts = "127.0.0.1,localhost,bhwanahandloom.com,www.bhwanahandloom.com,bhwanahandloom.vercel.app,.vercel.app"
 ALLOWED_HOSTS = [
-    h.strip() for h in os.getenv("ALLOWED_HOSTS", "127.0.0.1,.vercel.app").split(",") if h.strip()
+    h.strip() for h in os.getenv("ALLOWED_HOSTS", _default_hosts).split(",") if h.strip()
 ]
 
-# CSRF_TRUSTED_ORIGINS: comma-separated with scheme, e.g. "https://bhwanahandloom.com"
+# CSRF trusted origins require scheme (https). Set CSRF_TRUSTED_ORIGINS env or use defaults below.
+_default_csrf = "https://bhwanahandloom.com,https://www.bhwanahandloom.com,https://bhwanahandloom.vercel.app"
 CSRF_TRUSTED_ORIGINS = [
-    u.strip() for u in os.getenv(
-        "CSRF_TRUSTED_ORIGINS",
-        "https://bhwanahandloom.com,https://www.bhwanahandloom.com"
-    ).split(",") if u.strip()
+    u.strip() for u in os.getenv("CSRF_TRUSTED_ORIGINS", _default_csrf).split(",") if u.strip()
 ]
 
 # -----------------------
