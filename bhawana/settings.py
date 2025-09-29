@@ -4,17 +4,25 @@ Django settings for bhawana project.
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+import dj_database_url
 
+# .env file ko load karne ke liye (local development ke liye)
+load_dotenv()
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# --- SECRET KEY aur DEBUG ---
+# Yeh Vercel ya .env file se values lega
 SECRET_KEY = os.environ.get(
     'SECRET_KEY', 
     'your-default-development-secret-key-for-local-use'
 )
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
-
+# --- ALLOWED HOSTS ---
+# Vercel aur local host ko allow karein
 ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
 
 
@@ -30,15 +38,15 @@ INSTALLED_APPS = [
     'contact',
 ]
 
-
+# --- MIDDLEWARE ---
+# Whitenoise middleware ko sahi jagah par rakhein
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', # सही स्थान पर जोड़ा गया
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -62,14 +70,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'bhawana.wsgi.application'
 
+# --- DATABASE SETUP ---
+# Yeh code cloud database (Neon, Supabase, etc.) use karega
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('POSTGRES_URL'),
+        conn_max_age=600
+    )
 }
 
-
+# Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -77,18 +87,16 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-
+# Internationalization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-
-
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-
+# --- STATIC FILES SETUP FOR VERCEL ---
+# Yeh Vercel par aapki CSS/JS files ko serve karega
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
