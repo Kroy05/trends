@@ -1,42 +1,39 @@
 {% extends "store/base.html" %}
+{% load static %}
+
 {% block body %}
-            
-    
     <div class="deatil-cont">
         <div class="gallry">
             <div>
                 <span>
-                    <img src="{{item.item_image}}">
-                    <img src="{{item.item_image2}}">
-                    <img src="{{item.item_image3}}">
-                    <img src="{{item.item_image4}}">
+                    <img src="{{item.item_image.url}}">
+                    <img src="{{item.item_image2.url}}">
+                    <img src="{{item.item_image3.url}}">
+                    <img src="{{item.item_image4.url}}">
                 </span>
             </div>
         </div>
 
         <div class="deatils-deatils">
-            
-                <h2>{{item.item_title}} </h2>
-                
-
-                <table>
-
+            <h2>{{item.item_title}}</h2>
+            <table>
                 <tr>
-                    <th>Price </th>
-                    <td> &#8377 {{item.item_price}}</td>
+                    <th>Price</th>
+                    <td>&#8377; {{item.item_price}}</td>
                 </tr>
                 <tr>
-                    <th> Item Qty Available </th>
+                    <th>Item Qty Available</th>
                     <td>{{item.item_qty}}</td>
                 </tr>
                 <tr>
-                    <th> Color </th>
+                    <th>Color</th>
                     <td>{{item.item_color}}</td>
                 </tr>
                 <tr>
-                    <th>Fabric </th>
+                    <th>Fabric</th>
                     <td>{{item.item_fabric}}</td>
                 </tr>
+                <tr>
                     <th>Stiching-Type</th>
                     <td>{{item.item_Stiching}}</td>
                 </tr>
@@ -45,11 +42,5 @@
             <a href="{% url 'contact' %}" class="contact-btn"> Contact To Order </a>
             <h3 class="bck-btn"> <a href="{% url 'index' %}"> < Back </a> </h3>
         </div>
-        
     </div>
-        
-
 {% endblock %}
-
-
-   
